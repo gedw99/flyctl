@@ -40,8 +40,8 @@ func newPostgresCommand(client *client.Client) *Command {
 
 	connectStrings := docstrings.Get("postgres.connect")
 	connectCmd := BuildCommandKS(cmd, runPostgresConnect, connectStrings, client, requireSession, requireAppNameAsArg)
-	connectCmd.AddStringFlag(StringFlagOpts{Name: "user", Description: "the postgres user to connect with"})
-	connectCmd.AddStringFlag(StringFlagOpts{Name: "database", Description: "the postgres database to connect to"})
+	connectCmd.AddStringFlag(StringFlagOpts{Name: "user", Description: "The postgres user to connect with"})
+	connectCmd.AddStringFlag(StringFlagOpts{Name: "database", Description: "The postgres database to connect to"})
 
 	attachStrngs := docstrings.Get("postgres.attach")
 	attachCmd := BuildCommandKS(cmd, runAttachPostgresCluster, attachStrngs, client, requireSession, requireAppName)
