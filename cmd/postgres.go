@@ -234,7 +234,6 @@ func runDetachPostgresCluster(ctx *cmdctx.CmdContext) error {
 }
 
 func runPostgresConnect(ctx *cmdctx.CmdContext) error {
-
 	client := ctx.Client.API()
 	terminal.Debugf("Retrieving app info for %s\n", ctx.AppName)
 
@@ -264,8 +263,9 @@ func runPostgresConnect(ctx *cmdctx.CmdContext) error {
 	}
 
 	addr := fmt.Sprintf("%s.internal", ctx.AppName)
+
 	cmd := fmt.Sprintf("psql postgres://%s:@%s:5432/%s", user, addr, database)
-	fmt.Println(cmd)
+
 	return sshConnect(&SSHParams{
 		Ctx:    ctx,
 		Org:    &app.Organization,
@@ -273,7 +273,6 @@ func runPostgresConnect(ctx *cmdctx.CmdContext) error {
 		App:    ctx.AppName,
 		Cmd:    cmd,
 	}, addr)
-
 }
 
 func runListPostgresDatabases(ctx *cmdctx.CmdContext) error {
